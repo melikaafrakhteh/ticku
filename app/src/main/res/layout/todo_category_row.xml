@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_margin="4dp"
+    android:background="@color/white"
+    android:elevation="@dimen/elevation"
+    android:padding="2dp">
+
+    <CheckBox
+        android:id="@+id/taskCategoryCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/primary"
+        android:minWidth="0dp"
+        android:text=""
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/taskCategoryTaskTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_medium_size"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/taskCategoryCheckBox"
+        app:layout_constraintStart_toEndOf="@id/taskCategoryCheckBox"
+        app:layout_constraintTop_toTopOf="@+id/taskCategoryCheckBox"
+        tools:layout_editor_absoluteX="2dp"
+        tools:text="start reading a new book" />
+
+    <TextView
+        android:id="@+id/taskCategoryDateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_small_size"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/taskCategoryCheckBox"
+        app:layout_constraintStart_toEndOf="@id/taskCategoryCheckBox"
+        app:layout_constraintTop_toBottomOf="@id/taskCategoryTaskTv"
+        tools:text="11 november" />
+</androidx.constraintlayout.widget.ConstraintLayout>

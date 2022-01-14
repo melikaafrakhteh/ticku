@@ -2,4 +2,11 @@
     <string name="app_name">Ticku</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="school_title">School</string>
+    <string name="holiday_title">Holiday</string>
+    <string name="business_title">Business</string>
+    <string name="shopping_title">Shopping</string>
+    <string name="search_title">Search todo</string>
+    <string name="todo_categories_title">Todo Categories</string>
+    <string name="today_task_title">Today\'s Tasks</string>
 </resources>

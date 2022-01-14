@@ -1,14 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backGround"
     tools:context=".view.fragments.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/homeSearchEditText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="44dp"
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginTop="@dimen/margin_36"
+        android:layout_marginEnd="@dimen/margin_24"
+        android:background="@drawable/search_shape"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/padding_4"
+        android:fontFamily="@font/roboto_regular"
+        android:hint="@string/search_title"
+        android:inputType="text"
+        android:paddingStart="@dimen/padding_16"
+        android:textColor="@color/darkPrimary"
+        android:textColorHint="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,RtlSymmetry" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/homeCoverImg"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="@dimen/margin_24"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/home_cover"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeSearchEditText"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/homeTodoCatTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_24"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/todo_categories_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_medium_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeCoverImg" />
+
+    <LinearLayout
+        android:id="@+id/homeChooseFragLinear"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/margin_24"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeTodoCatTitle"
+        tools:ignore="DisableBaselineAlignment">
+
+        <LinearLayout
+            android:id="@+id/homeSchoolLinear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <ImageView
+                android:id="@+id/homeSchoolCover"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/school"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/homeSchoolTextTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/school_title"
+                android:textColor="@color/darkPrimary"
+                android:textSize="@dimen/text_small_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/homeHolidayLinear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <ImageView
+                android:id="@+id/homeHolidayCover"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/padding_4"
+                android:src="@drawable/holiday"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/homeHolidayTextTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/holiday_title"
+                android:textColor="@color/darkPrimary"
+                android:textSize="@dimen/text_small_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/homeBusinessLinear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <ImageView
+                android:id="@+id/homeBusinessCover"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:padding="@dimen/padding_4"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/business"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/homeBusinessTextTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/business_title"
+                android:textColor="@color/darkPrimary"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_small_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/homeShoppingLinear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <ImageView
+                android:id="@+id/homeShoppingCover"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/padding_4"
+                android:src="@drawable/shopping"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/homeShoppingTextTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/shopping_title"
+                android:textColor="@color/darkPrimary"
+                android:textSize="@dimen/text_small_size" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/homeTodoTodayTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_24"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/today_task_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_medium_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeChooseFragLinear" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeRv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_24"
+        tools:listitem="@layout/home_todo_row"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeTodoTodayTitle" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
