@@ -20,6 +20,7 @@
         android:fontFamily="@font/roboto_regular"
         android:hint="@string/search_title"
         android:inputType="text"
+        android:imeOptions="actionSearch"
         android:paddingStart="@dimen/padding_16"
         android:textColor="@color/darkPrimary"
         android:textColorHint="@color/gray"
@@ -30,8 +31,8 @@
 
     <ImageView
         android:id="@+id/homeCoverImg"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
         android:layout_margin="@dimen/margin_24"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
@@ -133,8 +134,8 @@
                 android:id="@+id/homeBusinessCover"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:padding="@dimen/padding_4"
                 android:layout_gravity="center_horizontal"
+                android:padding="@dimen/padding_4"
                 android:src="@drawable/business"
                 tools:ignore="ContentDescription" />
 
@@ -142,10 +143,10 @@
                 android:id="@+id/homeBusinessTextTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:fontFamily="@font/roboto_regular"
                 android:text="@string/business_title"
                 android:textColor="@color/darkPrimary"
-                android:layout_gravity="center"
                 android:textSize="@dimen/text_small_size" />
         </LinearLayout>
 
@@ -197,11 +198,26 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin_24"
-        tools:listitem="@layout/home_todo_row"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeTodoTodayTitle" />
+        app:layout_constraintTop_toBottomOf="@id/homeTodoTodayTitle"
+        tools:listitem="@layout/home_todo_row" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/homeFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/darkPrimary"
+        android:src="@drawable/ic_add"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
