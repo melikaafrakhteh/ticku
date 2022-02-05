@@ -1,8 +1,8 @@
 package com.afrakhteh.ticku.model.entities
 
-data class NoteEntity(
+data class TaskEntity(
     val noteName: String?,
     val noteType: Int,
-    val date: String,
+    val date: Long,
     val isDone: Boolean
 )
