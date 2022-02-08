@@ -25,4 +25,6 @@ interface TaskDao {
     @Query("SELECT * FROM Tasks WHERE taskType = :type")
     fun getAllTasksByType(type: Int): Flow<List<Tasks>>
 
+    @Query("SELECT * FROM tasks")
+    fun getAllTasks(): Flow<List<Tasks>>
 }
