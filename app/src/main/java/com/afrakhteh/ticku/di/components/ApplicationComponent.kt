@@ -14,7 +14,7 @@ import javax.inject.Singleton
 )
 @Singleton
 interface ApplicationComponent: AndroidInjector<App> {
- //   fun exposeContext(): Context
+    fun exposeContext(): Context
 
     @Component.Builder
     interface Builder {
