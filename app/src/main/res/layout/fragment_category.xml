@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backGround"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragments.shopping.ShoppingFragment">
+    tools:context=".view.fragments.category.CategoryFragment">
 
     <TextView
-        android:id="@+id/shoppingTitleTv"
+        android:id="@+id/CategoryTitleTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/shopping_title"
+        android:text="@string/school_title"
         android:textSize="@dimen/text_big_size"
         android:fontFamily="@font/roboto_bold"
         android:textColor="@color/darkPrimary"
@@ -20,13 +20,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/CategoryDeleteAllIv"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/delete_list"
+        app:layout_constraintBottom_toBottomOf="@id/CategoryTitleTv"
+        app:layout_constraintEnd_toEndOf="@id/CategoryTitleTv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/shoppingRv"
+        android:id="@+id/CategoryRv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:listitem="@layout/todo_category_row"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shoppingTitleTv" />
+        app:layout_constraintTop_toBottomOf="@id/CategoryTitleTv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
