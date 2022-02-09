@@ -8,7 +8,7 @@ class DomainDataMapperImpl : DomainDataMapper<TaskEntity, Tasks> {
 
     override fun convertDomainToData(domain: TaskEntity): Tasks {
         return Tasks(
-            taskName = domain.taskName,
+            taskName = domain.task,
             taskType = domain.taskType,
             date = domain.date,
             isDone = domain.isDone
@@ -17,7 +17,8 @@ class DomainDataMapperImpl : DomainDataMapper<TaskEntity, Tasks> {
 
     override fun convertDataToDomain(data: Tasks): TaskEntity {
         return TaskEntity(
-            taskName = data.taskName,
+            id = data.taskId,
+            task = data.taskName,
             taskType = data.taskType,
             date = data.date,
             isDone = data.isDone
