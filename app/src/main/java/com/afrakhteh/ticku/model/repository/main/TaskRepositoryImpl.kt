@@ -20,5 +20,9 @@ class TaskRepositoryImpl @Inject constructor(
         dao.deleteOneTask(id)
     }
 
+    override suspend fun getOneTask(id: Int): Tasks {
+        return dao.getOneTask(id)
+    }
+
     override fun getAllTasksByDay(date: Long): Flow<List<Tasks>> = dao.getAllTasksByDay(date)
 }
