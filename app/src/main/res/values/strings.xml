@@ -12,4 +12,5 @@
     <string name="add_title">Add New Task</string>
     <string name="add_desc">Be productive today, and let\'s make some wonderful world with it.</string>
     <string name="add_new_task">Add New Task ...</string>
+    <string name="empty_add_msg">Please Enter Your Task :)</string>
 </resources>

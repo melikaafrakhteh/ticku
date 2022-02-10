@@ -5,14 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.afrakhteh.ticku.R
+import com.afrakhteh.ticku.constants.Strings
 import com.afrakhteh.ticku.databinding.FragmentHomeBinding
 import com.afrakhteh.ticku.view.fragments.addEdit.AddFragment
 
 class HomeFragment : Fragment() {
 
     private var homeBinding: FragmentHomeBinding? = null
+
+    private var task: String? = null
+    private var taskType: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +34,7 @@ class HomeFragment : Fragment() {
         itemClicks()
     }
 
+
     private fun itemClicks() {
         with(requireNotNull(homeBinding)) {
             homeSearchEditText.setOnClickListener(::goToSearchPage)
@@ -40,7 +47,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun addNewTask(view: View?) {
-       AddFragment().show(requireActivity().supportFragmentManager,"tag")
+        AddFragment{ type, taskTitle ->
+            task = taskTitle
+            taskType = type
+
+        }.show(requireActivity().supportFragmentManager, "tag")
+
     }
 
     private fun goToShoppingCategoryPage(view: View?) {
@@ -60,7 +72,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun goToSearchPage(view: View?) {
-
+        val action = R.id.action_homeFragment_to_searchFragment
+       Navigation.findNavController(requireNotNull(view)).navigate(action)
     }
 
     override fun onDestroy() {
