@@ -9,4 +9,7 @@
     <string name="search_title">Search todo</string>
     <string name="todo_categories_title">Todo Categories</string>
     <string name="today_task_title">Today\'s Tasks</string>
+    <string name="add_title">Add New Task</string>
+    <string name="add_desc">Be productive today, and let\'s make some wonderful world with it.</string>
+    <string name="add_new_task">Add New Task ...</string>
 </resources>
