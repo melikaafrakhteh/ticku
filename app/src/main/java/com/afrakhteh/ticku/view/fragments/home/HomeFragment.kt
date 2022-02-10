@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.afrakhteh.ticku.R
 import com.afrakhteh.ticku.databinding.FragmentHomeBinding
+import com.afrakhteh.ticku.view.fragments.addEdit.AddFragment
 
 class HomeFragment : Fragment() {
 
@@ -38,7 +40,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun addNewTask(view: View?) {
-
+       AddFragment().show(requireActivity().supportFragmentManager,"tag")
     }
 
     private fun goToShoppingCategoryPage(view: View?) {

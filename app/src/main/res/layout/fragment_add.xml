@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
-    android:background="@drawable/add_fragment_shape"
+    android:layout_height="match_parent"
     tools:context=".view.fragments.addEdit.AddFragment">
+
+    <View
+        android:layout_width="70dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/addIconIv"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="@dimen/margin_36"
+        android:layout_marginTop="32dp"
         android:src="@drawable/assign"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.510"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
@@ -56,15 +66,19 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/addEditEt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDescTv"
+        app:layout_constraintVertical_bias="1.0">
 
         <RadioButton
             android:id="@+id/addSchoolRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_8"
             android:buttonTint="@color/gray"
             android:padding="@dimen/padding_2"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
             android:text="@string/school_title"
             android:textColor="@android:color/darker_gray" />
 
@@ -72,9 +86,10 @@
             android:id="@+id/addHolidayRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_8"
             android:buttonTint="@color/gray"
             android:padding="@dimen/padding_2"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
             android:text="@string/holiday_title"
             android:textColor="@android:color/darker_gray" />
 
@@ -82,10 +97,11 @@
             android:id="@+id/addBusinessRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_8"
             android:buttonTint="@color/gray"
             android:padding="@dimen/padding_2"
             android:text="@string/business_title"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
             android:textColor="@android:color/darker_gray" />
 
         <RadioButton
@@ -93,6 +109,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/gray"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
             android:padding="@dimen/padding_2"
             android:text="@string/shopping_title"
             android:textColor="@android:color/darker_gray" />
@@ -110,6 +128,7 @@
         android:imeOptions="actionDone"
         android:inputType="text"
         android:padding="@dimen/padding_8"
+        android:layout_marginBottom="@dimen/margin_16"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,9 +140,10 @@
         android:id="@+id/addAddOrEditIv"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:padding="@dimen/padding_2"
         android:layout_marginEnd="@dimen/margin_36"
         android:src="@drawable/send"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/addEditEt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addRadioGp"
         tools:ignore="ContentDescription" />
