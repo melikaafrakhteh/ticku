@@ -17,7 +17,7 @@ import dagger.Component
 )
 @RepoScope
 interface RepositoryComponent {
-    fun exposeMapper(): DomainDataMapper<TaskEntity, Tasks>
+   fun exposeMapper(): DomainDataMapper<TaskEntity, Tasks>
 
     fun exposeMainTaskRepository(): TaskRepository
     fun exposeListTaskRepository(): ListTasksRepository

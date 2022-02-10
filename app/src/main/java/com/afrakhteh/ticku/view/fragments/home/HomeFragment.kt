@@ -6,16 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.afrakhteh.ticku.R
 import com.afrakhteh.ticku.constants.Strings
 import com.afrakhteh.ticku.databinding.FragmentHomeBinding
 import com.afrakhteh.ticku.view.fragments.addEdit.AddFragment
+import com.afrakhteh.ticku.viewModel.HomeViewModel
+import javax.inject.Inject
 
 class HomeFragment : Fragment() {
 
     private var homeBinding: FragmentHomeBinding? = null
+
+    @Inject lateinit var vmProvider: ViewModelProvider.Factory
+    private val viewModel: HomeViewModel by viewModels {vmProvider}
 
     private var task: String? = null
     private var taskType: Int? = null
