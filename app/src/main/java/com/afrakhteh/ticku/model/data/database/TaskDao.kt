@@ -20,7 +20,7 @@ interface TaskDao {
     suspend fun deleteAllTasksByType(type: Int)
 
     @Query("SELECT * FROM Tasks WHERE date = :date")
-    fun getAllTasksByDay(date: Long): Flow<List<Tasks>>
+    fun getAllTasksByDay(date: String): Flow<List<Tasks>>
 
     @Query("SELECT * FROM Tasks WHERE taskType = :type")
     fun getAllTasksByType(type: Int): Flow<List<Tasks>>

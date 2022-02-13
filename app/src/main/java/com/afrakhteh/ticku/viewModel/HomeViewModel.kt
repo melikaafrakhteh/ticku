@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import com.afrakhteh.ticku.di.qualifier.IoDispatcher
+import com.afrakhteh.ticku.di.scopes.VmScope
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.useCase.MainPageUseCases
 import kotlinx.coroutines.CoroutineDispatcher
@@ -14,7 +15,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
+@VmScope
 class HomeViewModel @Inject constructor(
     private val mainPageUseCases: MainPageUseCases,
    @IoDispatcher private val io: CoroutineDispatcher
@@ -35,7 +36,7 @@ class HomeViewModel @Inject constructor(
         mainPageUseCases.deleteOneTaskUseCase(id)
     }
 
-    fun getAllTask(date: Long) {
+    fun getAllTask(date: String) {
         mainPageUseCases.getAllTasksByDayUseCase(date).asLiveData(io).let { list ->
             pListOfTasks.postValue(list.value)
         }

@@ -3,8 +3,9 @@ package com.afrakhteh.ticku.model.data.mapper
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.entities.Tasks
 import com.afrakhteh.ticku.util.DomainDataMapper
+import javax.inject.Inject
 
-class DomainDataMapperImpl : DomainDataMapper<TaskEntity, Tasks> {
+class DomainDataMapperImpl @Inject constructor(): DomainDataMapper<TaskEntity, Tasks> {
 
     override fun convertDomainToData(domain: TaskEntity): Tasks {
         return Tasks(
@@ -17,7 +18,6 @@ class DomainDataMapperImpl : DomainDataMapper<TaskEntity, Tasks> {
 
     override fun convertDataToDomain(data: Tasks): TaskEntity {
         return TaskEntity(
-            id = data.taskId,
             task = data.taskName,
             taskType = data.taskType,
             date = data.date,

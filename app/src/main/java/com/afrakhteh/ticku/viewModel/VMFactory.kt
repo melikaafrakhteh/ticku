@@ -6,17 +6,21 @@ import com.afrakhteh.ticku.di.scopes.VmScope
 import javax.inject.Inject
 import javax.inject.Provider
 
-@VmScope
 @Suppress("UNCHECKED_CAST")
+@VmScope
+@JvmSuppressWildcards
 class VMFactory @Inject constructor(
-    private val viewModelProviders: Map<@JvmSuppressWildcards Class<out ViewModel>,
-            @JvmSuppressWildcards Provider<ViewModel>>
-): ViewModelProvider.AndroidViewModelFactory() {
+    private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>
+) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        val provider = requireNotNull(viewModelProviders[modelClass]) {
-            "${modelClass.name} isn't registered in your dagger graph!"
+        val creator = viewModels[modelClass]
+            ?: viewModels.asIterable().firstOrNull { modelClass.isAssignableFrom(it.key) }?.value
+            ?: throw IllegalArgumentException("unknown model class $modelClass")
+        return try {
+            creator.get() as T
+        } catch (e: Exception) {
+            throw RuntimeException(e)
         }
-        return provider.get() as T
     }
 }

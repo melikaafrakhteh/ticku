@@ -9,6 +9,6 @@ data class Tasks(
     var taskId: Int = 0,
     val taskName: String?,
     val taskType: Int,
-    val date: Long,
+    val date: String,
     val isDone: Boolean
 )

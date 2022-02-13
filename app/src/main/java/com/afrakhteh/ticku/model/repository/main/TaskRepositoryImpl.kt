@@ -24,5 +24,5 @@ class TaskRepositoryImpl @Inject constructor(
         return dao.getOneTask(id)
     }
 
-    override fun getAllTasksByDay(date: Long): Flow<List<Tasks>> = dao.getAllTasksByDay(date)
+    override fun getAllTasksByDay(date: String): Flow<List<Tasks>> = dao.getAllTasksByDay(date)
 }

@@ -13,7 +13,7 @@
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_schoolFragment"
+            android:id="@+id/action_homeFragment_to_categoryFragment"
             app:destination="@id/schoolFragment" />
         <action
             android:id="@+id/action_homeFragment_to_addFragment"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/schoolFragment"
-        android:name="com.afrakhteh.ticku.view.fragments.category.SchoolFragment"
+        android:name="com.afrakhteh.ticku.view.fragments.category.CategoryFragment"
         android:label="fragment_school"
         tools:layout="@layout/fragment_category" >
         <action

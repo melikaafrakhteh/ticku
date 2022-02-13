@@ -10,11 +10,12 @@ import kotlinx.coroutines.Dispatchers
 @Module
 class DispatcherModule {
 
-    @IoDispatcher
+
     @Provides
+    @IoDispatcher
     fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 
-    @MainDispatcher
     @Provides
+    @MainDispatcher
     fun provideMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
 }

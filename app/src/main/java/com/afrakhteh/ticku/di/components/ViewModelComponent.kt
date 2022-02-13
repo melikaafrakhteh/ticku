@@ -7,10 +7,10 @@ import dagger.Component
 
 @Component(
     modules = [ViewModelModule::class],
-    dependencies = [UseCaseComponent::class]
+    dependencies = [UseCaseComponent::class,
+                    ApplicationComponent::class]
 )
 @VmScope
 interface ViewModelComponent {
-
-    fun inject (homeFragment: HomeFragment)
+    fun inject(homeFragment: HomeFragment)
 }
