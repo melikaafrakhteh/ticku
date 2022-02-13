@@ -5,7 +5,7 @@ import android.widget.TextView
 import com.afrakhteh.ticku.R
 import com.afrakhteh.ticku.util.EpoxyKotlinHolder
 
-class TaskEpoxyHolder: EpoxyKotlinHolder() {
+class TaskHomeEpoxyHolder: EpoxyKotlinHolder() {
     val taskCheckbox by bind <CheckBox> (R.id.homeTaskCheckBox)
     val taskTitle by bind <TextView> (R.id.homeTaskTaskTv)
 }
