@@ -103,18 +103,17 @@ class HomeFragment : Fragment() {
         AddFragment { type, taskTitle ->
             task = taskTitle
             taskType = type
+            viewModel.addNewTask(
+                TaskEntity(
+                    task = task,
+                    taskType = requireNotNull(taskType),
+                    date = findDate(),
+                    isDone = false
+                )
+            )
+            Toast.makeText(requireContext(), getString(R.string.add_toast), Toast.LENGTH_LONG).show()
 
         }.show(requireActivity().supportFragmentManager, "tag")
-
-        viewModel.addNewTask(
-            TaskEntity(
-                task = task,
-                taskType = taskType!!,
-                date = findDate(),
-                isDone = false
-            )
-        )
-        Toast.makeText(requireContext(), getString(R.string.add_toast), Toast.LENGTH_LONG).show()
     }
 
     private fun goToShoppingCategoryPage(view: View?) {
