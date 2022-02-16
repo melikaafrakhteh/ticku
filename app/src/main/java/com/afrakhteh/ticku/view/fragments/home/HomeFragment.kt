@@ -18,6 +18,7 @@ import com.afrakhteh.ticku.databinding.FragmentHomeBinding
 import com.afrakhteh.ticku.di.builders.ViewModelComponentBuilder
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.view.fragments.addEdit.AddFragment
+import com.afrakhteh.ticku.view.fragments.home.epoxy.TaskHomeEpoxyController
 import com.afrakhteh.ticku.viewModel.HomeViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,8 +28,11 @@ class HomeFragment : Fragment() {
 
     private var homeBinding: FragmentHomeBinding? = null
 
-    @Inject lateinit var vmProvider: ViewModelProvider.Factory
-    private val viewModel: HomeViewModel by viewModels {vmProvider}
+    @Inject
+    lateinit var vmProvider: ViewModelProvider.Factory
+    private val viewModel: HomeViewModel by viewModels { vmProvider }
+
+    private lateinit var controller: TaskHomeEpoxyController
 
     private var task: String? = null
     private var taskType: Int? = null
@@ -50,13 +54,29 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        controller = TaskHomeEpoxyController(::checkDoneHomeTask, ::removeTaskFromList)
+        requireNotNull(homeBinding).homeRv.apply {
+            adapter = controller.adapter
+        }
+        viewModel.listOfTasks.observe(viewLifecycleOwner, ::renderTaskList)
         itemClicks()
-      //  viewModel.getAllTask(findDate())
-    //    viewModel.listOfTasks.observe(viewLifecycleOwner, ::renderTaskList)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAllTask(findDate())
+    }
+
+    private fun removeTaskFromList(position: Int) {
+
+    }
+
+    private fun checkDoneHomeTask(position: Int) {
+
     }
 
     private fun renderTaskList(list: List<TaskEntity>?) {
-
+        controller.setData(list)
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -80,14 +100,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun addNewTask(view: View?) {
-        AddFragment{ type, taskTitle ->
+        AddFragment { type, taskTitle ->
             task = taskTitle
             taskType = type
 
         }.show(requireActivity().supportFragmentManager, "tag")
 
-        viewModel.addNewTask(TaskEntity(task, taskType!!,findDate(),false))
-        Toast.makeText(requireContext(),"add ${viewModel.listOfTasks}",Toast.LENGTH_LONG).show()
+        viewModel.addNewTask(
+            TaskEntity(
+                task = task,
+                taskType = taskType!!,
+                date = findDate(),
+                isDone = false
+            )
+        )
+        Toast.makeText(requireContext(), getString(R.string.add_toast), Toast.LENGTH_LONG).show()
     }
 
     private fun goToShoppingCategoryPage(view: View?) {
@@ -108,7 +135,7 @@ class HomeFragment : Fragment() {
 
     private fun goToSearchPage(view: View?) {
         val action = R.id.action_homeFragment_to_searchFragment
-       Navigation.findNavController(requireNotNull(view)).navigate(action)
+        Navigation.findNavController(requireNotNull(view)).navigate(action)
     }
 
     override fun onDestroy() {
