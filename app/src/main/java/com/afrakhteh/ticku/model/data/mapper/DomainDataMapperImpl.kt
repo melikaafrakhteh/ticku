@@ -18,6 +18,7 @@ class DomainDataMapperImpl @Inject constructor(): DomainDataMapper<TaskEntity, T
 
     override fun convertDataToDomain(data: Tasks): TaskEntity {
         return TaskEntity(
+            id = data.taskId,
             task = data.taskName,
             taskType = data.taskType,
             date = data.date,
