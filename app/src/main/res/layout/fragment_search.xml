@@ -8,8 +8,7 @@
     android:background="@color/backGround"
     tools:context=".view.fragments.search.SearchFragment">
 
-    <EditText
-        android:id="@+id/searchEditText"
+    <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="@drawable/search_shape"
@@ -27,7 +26,7 @@
         android:drawableStart="@drawable/ic_search"
         android:drawablePadding="@dimen/padding_4"
         android:inputType="text"
-        tools:ignore="Autofill,RtlSymmetry" />
+        tools:ignore="Autofill,RtlSymmetry"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRv"
