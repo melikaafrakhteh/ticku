@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +33,7 @@ class HomeFragment : Fragment() {
     lateinit var vmProvider: ViewModelProvider.Factory
     private val viewModel: HomeViewModel by viewModels { vmProvider }
 
-    private lateinit var controller: TaskHomeEpoxyController
+    private lateinit var rvController: TaskHomeEpoxyController
 
     private var task: String? = null
     private var taskType: Int? = null
@@ -54,17 +55,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        controller = TaskHomeEpoxyController(::checkDoneHomeTask, ::removeTaskFromList)
-        requireNotNull(homeBinding).homeRv.apply {
-            adapter = controller.adapter
-        }
+       // viewModel.getAllTask(findDate().trim())
+        rvController = TaskHomeEpoxyController(::checkDoneHomeTask, ::removeTaskFromList)
+        requireNotNull(homeBinding).homeRv.setController(rvController)
         viewModel.listOfTasks.observe(viewLifecycleOwner, ::renderTaskList)
         itemClicks()
     }
 
     override fun onResume() {
         super.onResume()
-        viewModel.getAllTask(findDate())
+        //viewModel.getAllTask(findDate().trim())
     }
 
     private fun removeTaskFromList(position: Int) {
@@ -76,7 +76,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun renderTaskList(list: List<TaskEntity>?) {
-        controller.setData(list)
+        rvController.setData(list)
+        Log.d("renderlist", "$list")
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -112,7 +113,6 @@ class HomeFragment : Fragment() {
                 )
             )
             Toast.makeText(requireContext(), getString(R.string.add_toast), Toast.LENGTH_LONG).show()
-
         }.show(requireActivity().supportFragmentManager, "tag")
     }
 

@@ -1,5 +1,6 @@
 package com.afrakhteh.ticku.model.repository.main
 
+import android.util.Log
 import com.afrakhteh.ticku.di.scopes.RepoScope
 import com.afrakhteh.ticku.model.data.database.TaskDao
 import com.afrakhteh.ticku.model.entities.Tasks
@@ -24,5 +25,7 @@ class TaskRepositoryImpl @Inject constructor(
         return dao.getOneTask(id)
     }
 
-    override fun getAllTasksByDay(date: String): Flow<List<Tasks>> = dao.getAllTasksByDay(date)
+    override fun getAllTasksByDay(date: String): Flow<List<Tasks>> {
+       return dao.getAllTasksByDay(date)
+    }
 }

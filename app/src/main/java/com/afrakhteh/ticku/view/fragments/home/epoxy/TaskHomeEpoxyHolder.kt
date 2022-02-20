@@ -9,5 +9,5 @@ import com.afrakhteh.ticku.util.EpoxyKotlinHolder
 class TaskHomeEpoxyHolder: EpoxyKotlinHolder() {
     val taskCheckbox by bind <CheckBox> (R.id.homeTaskCheckBox)
     val taskTitle by bind <TextView> (R.id.homeTaskTaskTv)
-    val taskHome by  bind<ConstraintLayout>(R.id.homeTaskConstraint)
+    val taskHome by  bind <ConstraintLayout> (R.id.homeTaskConstraint)
 }

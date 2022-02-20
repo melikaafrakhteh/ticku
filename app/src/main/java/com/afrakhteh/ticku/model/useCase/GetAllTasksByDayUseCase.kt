@@ -1,5 +1,6 @@
 package com.afrakhteh.ticku.model.useCase
 
+import android.util.Log
 import com.afrakhteh.ticku.di.scopes.UseCaseScope
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.entities.Tasks
@@ -16,12 +17,13 @@ class GetAllTasksByDayUseCase @Inject constructor(
     private val repository: TaskRepository,
     private val mapper: DomainDataMapper<TaskEntity, Tasks>
 ) {
-    operator fun invoke(date: String) = flow<List<TaskEntity>> {
+    operator fun invoke(date: String) = flow {
         val data = repository.getAllTasksByDay(date).map { list ->
             list.map {
                 mapper.convertDataToDomain(it)
             }
         }
+        Log.d("usecase", "getAllTask: $data")
         emit(data.flattenToList())
     }
 }
