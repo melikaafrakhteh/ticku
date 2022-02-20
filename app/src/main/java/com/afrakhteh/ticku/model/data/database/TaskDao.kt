@@ -30,4 +30,7 @@ interface TaskDao {
 
     @Query("SELECT * FROM Tasks")
     fun getAllTasks(): Flow<List<Tasks>>
+
+    @Query("SELECT * FROM Tasks WHERE taskName LIKE '%' || :search || '%'")
+    fun getSearchedTasks(search: String?): Flow<List<Tasks>>
 }
