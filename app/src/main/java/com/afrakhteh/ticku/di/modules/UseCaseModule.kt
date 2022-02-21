@@ -9,6 +9,7 @@ import com.afrakhteh.ticku.model.useCase.*
 import com.afrakhteh.ticku.util.DomainDataMapper
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
 
 @Module
 class UseCaseModule {
@@ -31,12 +32,14 @@ class UseCaseModule {
     @UseCaseScope
     fun providesListsUseCases(
         repository: ListTasksRepository,
-        mapper: DomainDataMapper<TaskEntity, Tasks>
+        mapper: DomainDataMapper<TaskEntity, Tasks>,
+        io: CoroutineDispatcher
     ): ListsPagesUseCases {
         return ListsPagesUseCases(
             deleteAllTaskByTypeUseCase = DeleteAllTaskByTypeUseCase(repository),
             getAllTasksByTypeUseCase = GetAllTasksByTypeUseCase(repository, mapper),
-            getAllTasksUseCase = GetAllTasksUseCase(repository, mapper)
+            getAllTasksUseCase = GetAllTasksUseCase(repository, mapper),
+            searchTaskUseCase = SearchTaskUseCase(repository, mapper, io)
         )
     }
 }

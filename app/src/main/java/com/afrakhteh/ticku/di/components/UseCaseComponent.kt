@@ -8,7 +8,8 @@ import dagger.Component
 
 @Component(
     modules = [UseCaseModule::class],
-    dependencies = [RepositoryComponent::class]
+    dependencies = [RepositoryComponent::class,
+        ApplicationComponent::class]
 )
 @UseCaseScope
 interface UseCaseComponent {

@@ -6,5 +6,6 @@ import com.afrakhteh.ticku.di.scopes.UseCaseScope
 data class ListsPagesUseCases(
     val deleteAllTaskByTypeUseCase: DeleteAllTaskByTypeUseCase,
     val getAllTasksByTypeUseCase: GetAllTasksByTypeUseCase,
-    val getAllTasksUseCase: GetAllTasksUseCase
+    val getAllTasksUseCase: GetAllTasksUseCase,
+    val searchTaskUseCase: SearchTaskUseCase
 )

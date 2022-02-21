@@ -3,6 +3,7 @@ package com.afrakhteh.ticku.di.components
 import com.afrakhteh.ticku.di.modules.ViewModelModule
 import com.afrakhteh.ticku.di.scopes.VmScope
 import com.afrakhteh.ticku.view.fragments.home.HomeFragment
+import com.afrakhteh.ticku.view.fragments.search.SearchFragment
 import dagger.Component
 
 @Component(
@@ -13,4 +14,5 @@ import dagger.Component
 @VmScope
 interface ViewModelComponent {
     fun inject(homeFragment: HomeFragment)
+    fun inject(searchFragment: SearchFragment)
 }
