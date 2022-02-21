@@ -9,6 +9,7 @@
     tools:context=".view.fragments.search.SearchFragment">
 
     <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchSV"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="@drawable/search_shape"
