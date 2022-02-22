@@ -1,5 +1,6 @@
 package com.afrakhteh.ticku.viewModel
 
+import android.util.Log
 import android.widget.EditText
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

@@ -12,7 +12,7 @@ class SearchEpoxyController() : TypedEpoxyController<List<TaskEntity>>() {
                 title(task.task)
                 date(task.date)
                 isDone(task.isDone)
-            }
+            }.addTo(this)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.afrakhteh.ticku.view.fragments.search
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.afrakhteh.ticku.R
 import com.afrakhteh.ticku.databinding.FragmentSearchBinding
 import com.afrakhteh.ticku.di.builders.ViewModelComponentBuilder
 import com.afrakhteh.ticku.model.entities.TaskEntity
+import com.afrakhteh.ticku.view.fragments.search.epoxy.SearchEpoxyController
 import com.afrakhteh.ticku.viewModel.SearchViewModel
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,6 +26,7 @@ import javax.inject.Inject
 class SearchFragment : Fragment() {
 
     private var searchBinding: FragmentSearchBinding? = null
+    private var controller: SearchEpoxyController? = null
 
     @Inject
     lateinit var vmProvider: ViewModelProvider.Factory
@@ -45,12 +48,13 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        controller = SearchEpoxyController()
         initialiseView()
         viewModel.searchTaskLiveData.observe(viewLifecycleOwner, ::renderSearch)
     }
 
     private fun renderSearch(list: List<TaskEntity>?) {
-
+        controller?.setData(list)
     }
 
     private fun initialiseView() {
@@ -71,8 +75,8 @@ class SearchFragment : Fragment() {
             }
         )
 
+        requireNotNull(searchBinding).searchRv.adapter = controller?.adapter
     }
-
 
     override fun onDestroy() {
         searchBinding = null

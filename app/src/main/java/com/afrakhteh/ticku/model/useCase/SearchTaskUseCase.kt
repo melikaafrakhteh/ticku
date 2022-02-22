@@ -1,5 +1,6 @@
 package com.afrakhteh.ticku.model.useCase
 
+import android.util.Log
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.entities.Tasks
 import com.afrakhteh.ticku.model.repository.list.ListTasksRepository
@@ -19,6 +20,7 @@ class SearchTaskUseCase @Inject constructor(
     operator fun invoke(text: String?): Flow<List<TaskEntity>> {
         return repository.getSearchedTasks(text).map { tasks ->
             tasks.map {
+                Log.d("invoke", "$it")
                 mapper.convertDataToDomain(it)
             }
         }.flowOn(io)

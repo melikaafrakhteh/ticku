@@ -10,20 +10,20 @@ import com.airbnb.epoxy.EpoxyModelWithHolder
 @EpoxyModelClass(layout = R.layout.todo_category_row)
 abstract class SearchEpoxyModel : EpoxyModelWithHolder<SearchEpoxyHolder>() {
 
-    @EpoxyAttribute
-    var title: String = ""
+    @field: EpoxyAttribute
+    var title: String ? = null
 
-    @EpoxyAttribute
-    var date: String = ""
+    @field: EpoxyAttribute
+    var date: String  ? = null
 
-    @EpoxyAttribute
+    @field: EpoxyAttribute
     open var isDone: Boolean = false
 
     override fun bind(holder: SearchEpoxyHolder) {
         super.bind(holder)
         with(holder) {
-            taskTitle.text = title.trim()
-            taskDate.text = date.trim()
+            taskTitle.text = title?.trim()
+            taskDate.text = date?.trim()
             taskCheck.isChecked = isDone
             drawLineOnTaskIfDone(taskTitle)
         }
