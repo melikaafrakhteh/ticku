@@ -17,7 +17,7 @@ class TaskHomeEpoxyController(
                 isDone(taskEntity.isDone)
                 onCheckedAction { this@TaskHomeEpoxyController.checkAction(taskEntity.id)}
                 deleteListener { this@TaskHomeEpoxyController.deleteItem(taskEntity.id) }
-            }
+            }.addTo(this)
         }
     }
 }
