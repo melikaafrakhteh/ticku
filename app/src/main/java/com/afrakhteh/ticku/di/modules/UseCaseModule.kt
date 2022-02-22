@@ -1,5 +1,6 @@
 package com.afrakhteh.ticku.di.modules
 
+import com.afrakhteh.ticku.di.qualifier.IoDispatcher
 import com.afrakhteh.ticku.di.scopes.UseCaseScope
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.entities.Tasks
@@ -33,7 +34,7 @@ class UseCaseModule {
     fun providesListsUseCases(
         repository: ListTasksRepository,
         mapper: DomainDataMapper<TaskEntity, Tasks>,
-        io: CoroutineDispatcher
+        @IoDispatcher io: CoroutineDispatcher
     ): ListsPagesUseCases {
         return ListsPagesUseCases(
             deleteAllTaskByTypeUseCase = DeleteAllTaskByTypeUseCase(repository),
