@@ -15,6 +15,7 @@ import com.afrakhteh.ticku.databinding.FragmentCategoryBinding
 import com.afrakhteh.ticku.di.builders.ViewModelComponentBuilder
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.view.customs.DeleteDialog
+import com.afrakhteh.ticku.view.fragments.category.epoxy.CategoryEpoxyController
 import com.afrakhteh.ticku.viewModel.CategoryViewModel
 import javax.inject.Inject
 
@@ -25,6 +26,8 @@ class CategoryFragment : Fragment() {
     @Inject
     lateinit var vmProvider: ViewModelProvider.Factory
     private val viewModel: CategoryViewModel by viewModels { vmProvider }
+
+    private lateinit var controller: CategoryEpoxyController
 
     private var type: Int? = null
 
@@ -44,19 +47,20 @@ class CategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        controller = CategoryEpoxyController()
         initialiseView()
         viewModel.getCategoryItem(type!!)
         viewModel.listOfData.observe(viewLifecycleOwner, ::renderList)
     }
 
     private fun renderList(list: List<TaskEntity>?) {
-
+        controller.setData(list)
     }
 
     private fun initialiseView() {
         requireNotNull(categoryBinding).apply {
             CategoryTitleTv.text = findCategoryName().trim()
-            //CategoryRv.adapter =
+            CategoryRv.adapter = controller.adapter
             CategoryDeleteAllIv.setOnClickListener(::deleteAllTasks)
         }
     }
