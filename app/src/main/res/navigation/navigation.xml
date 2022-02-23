@@ -27,6 +27,10 @@
         <action
             android:id="@+id/action_schoolFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="type"
+            app:argType="integer"
+            android:defaultValue="-1" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"

@@ -9,12 +9,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.afrakhteh.ticku.R
+import com.afrakhteh.ticku.constants.Numerals
+import com.afrakhteh.ticku.constants.Strings
 import com.afrakhteh.ticku.databinding.FragmentHomeBinding
 import com.afrakhteh.ticku.di.builders.ViewModelComponentBuilder
 import com.afrakhteh.ticku.model.entities.TaskEntity
@@ -55,7 +60,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       // viewModel.getAllTask(findDate().trim())
+        // viewModel.getAllTask(findDate().trim())
         rvController = TaskHomeEpoxyController(::checkDoneHomeTask, ::removeTaskFromList)
         requireNotNull(homeBinding).homeRv.setController(rvController)
         viewModel.listOfTasks.observe(viewLifecycleOwner, ::renderTaskList)
@@ -112,24 +117,31 @@ class HomeFragment : Fragment() {
                     isDone = false
                 )
             )
-            Toast.makeText(requireContext(), getString(R.string.add_toast), Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), getString(R.string.add_toast), Toast.LENGTH_LONG)
+                .show()
         }.show(requireActivity().supportFragmentManager, "tag")
     }
 
     private fun goToShoppingCategoryPage(view: View?) {
-
+        goToCategories(Numerals.SHOPPING_TYPE, view)
     }
 
     private fun goToBusinessCategoryPage(view: View?) {
-
+        goToCategories(Numerals.BUSINESS_TYPE, view)
     }
 
     private fun goToHolidayCategoryPage(view: View?) {
-
+        goToCategories(Numerals.HOLIDAY_TYPE, view)
     }
 
     private fun goToSchoolCategoryPage(view: View?) {
+        goToCategories(Numerals.SCHOOL_TYPE, view)
+    }
 
+    private fun goToCategories(type: Int, view: View?) {
+        val action = R.id.action_homeFragment_to_categoryFragment
+        val bundle = bundleOf(Strings.TYPE_KEY to type)
+        view?.findNavController()?.navigate(action, bundle)
     }
 
     private fun goToSearchPage(view: View?) {

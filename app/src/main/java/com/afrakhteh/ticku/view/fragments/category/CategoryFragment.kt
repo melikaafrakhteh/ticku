@@ -48,6 +48,7 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         controller = CategoryEpoxyController()
+        type = arguments?.getInt(Strings.TYPE_KEY)
         initialiseView()
         viewModel.getCategoryItem(type!!)
         viewModel.listOfData.observe(viewLifecycleOwner, ::renderList)
