@@ -30,7 +30,7 @@ import dagger.multibindings.IntoMap
     fun bindSearchVm(viewModel: SearchViewModel): ViewModel
 
     @Binds
-    @MapInfo
+    @IntoMap
     @VmKey(CategoryViewModel::class)
     fun bindCategoryVm(viewModel: CategoryViewModel): ViewModel
 }
