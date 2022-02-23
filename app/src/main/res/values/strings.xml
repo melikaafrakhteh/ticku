@@ -14,4 +14,7 @@
     <string name="add_new_task">Add New Task ...</string>
     <string name="empty_add_msg">Please Enter Your Task :)</string>
     <string name="add_toast">SuccessFully task added</string>
+    <string name="No_dialog_msg">No</string>
+    <string name="delete_dialog_yes">Yes</string>
+    <string name="delete_dialog_content">Are you sure?</string>
 </resources>
