@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.afrakhteh.ticku.R
 import com.afrakhteh.ticku.constants.Numerals
 import com.afrakhteh.ticku.constants.Strings
@@ -17,6 +18,7 @@ import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.view.customs.DeleteDialog
 import com.afrakhteh.ticku.view.fragments.category.epoxy.CategoryEpoxyController
 import com.afrakhteh.ticku.viewModel.CategoryViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CategoryFragment : Fragment() {
@@ -51,11 +53,11 @@ class CategoryFragment : Fragment() {
         type = arguments?.getInt(Strings.TYPE_KEY)
         initialiseView()
         viewModel.getCategoryItem(type!!)
-        viewModel.listOfData.observe(viewLifecycleOwner, ::renderList)
-    }
-
-    private fun renderList(list: List<TaskEntity>?) {
-        controller.setData(list)
+        lifecycleScope.launch {
+            viewModel.listOfData.collect{list ->
+                controller.setData(list)
+            }
+        }
     }
 
     private fun initialiseView() {

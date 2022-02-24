@@ -5,6 +5,9 @@ import com.afrakhteh.ticku.di.qualifier.IoDispatcher
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.useCase.ListsPagesUseCases
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -13,12 +16,14 @@ class CategoryViewModel @Inject constructor(
     @IoDispatcher private val io: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val pListOfData = MutableLiveData<List<TaskEntity>>()
-    val listOfData: LiveData<List<TaskEntity>> get() = pListOfData
+    private val pListOfData = MutableStateFlow<List<TaskEntity>>(emptyList())
+    val listOfData: StateFlow<List<TaskEntity>> get() = pListOfData
 
     fun getCategoryItem(type: Int) {
-        useCases.getAllTasksByTypeUseCase(type).asLiveData(io).value?.let {
-            pListOfData.postValue(it)
+        viewModelScope.launch {
+            useCases.getAllTasksByTypeUseCase(type).collectLatest {
+                pListOfData.value = it
+            }
         }
     }
 
