@@ -32,7 +32,7 @@
     <ImageView
         android:id="@+id/homeCoverImg"
         android:layout_width="wrap_content"
-        android:layout_height="140dp"
+        android:layout_height="160dp"
         android:layout_margin="@dimen/margin_24"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
@@ -220,6 +220,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white"
         tools:ignore="ContentDescription" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
