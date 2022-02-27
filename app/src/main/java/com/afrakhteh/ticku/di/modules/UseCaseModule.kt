@@ -39,7 +39,6 @@ class UseCaseModule {
         return ListsPagesUseCases(
             deleteAllTaskByTypeUseCase = DeleteAllTaskByTypeUseCase(repository),
             getAllTasksByTypeUseCase = GetAllTasksByTypeUseCase(repository, mapper),
-            getAllTasksUseCase = GetAllTasksUseCase(repository, mapper),
             searchTaskUseCase = SearchTaskUseCase(repository, mapper, io)
         )
     }
