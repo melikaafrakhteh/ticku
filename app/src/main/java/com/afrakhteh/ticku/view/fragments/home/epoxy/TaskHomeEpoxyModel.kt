@@ -29,9 +29,9 @@ abstract class TaskHomeEpoxyModel : EpoxyModelWithHolder<TaskHomeEpoxyHolder>() 
             taskTitle.text = title
             taskCheckbox.apply {
                 isChecked = isDone
-                drawLineOnTaskIfDone(taskTitle)
                 setOnCheckedChangeListener { _, _ -> onCheckedAction() }
             }
+            drawLineOnTaskIfDone(taskTitle)
             taskHome.setOnLongClickListener{
                 deleteListener()
                 return@setOnLongClickListener true

@@ -7,5 +7,6 @@ data class MainPageUseCases(
     val addNewTaskUseCase: AddNewTaskUseCase,
     val deleteOneTaskUseCase: DeleteOneTaskUseCase,
     val getAllTasksByDayUseCase: GetAllTasksByDayUseCase,
-    val getOneTaskUseCase: GetOneTaskUseCase
+    val getOneTaskUseCase: GetOneTaskUseCase,
+    val updateTaskUseCase: UpdateTaskUseCase
 )

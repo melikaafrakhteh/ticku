@@ -39,6 +39,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun updateTask(id: Int) {
+        job = CoroutineScope(io).launch {
+            mainPageUseCases.updateTaskUseCase(id)
+        }
+    }
+
     fun getAllTask(date: String) {
         viewModelScope.launch {
             mainPageUseCases.getAllTasksByDayUseCase(date).collectLatest {

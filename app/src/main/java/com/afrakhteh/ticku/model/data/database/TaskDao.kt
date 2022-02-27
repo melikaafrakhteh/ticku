@@ -30,4 +30,7 @@ interface TaskDao {
 
     @Query("SELECT * FROM Tasks WHERE taskName LIKE '%' || :search || '%'")
     fun getSearchedTasks(search: String?): Flow<List<Tasks>>
+
+    @Query("UPDATE Tasks SET isDone = 1 WHERE taskId = :id ")
+    suspend fun updateTask(id: Int)
 }

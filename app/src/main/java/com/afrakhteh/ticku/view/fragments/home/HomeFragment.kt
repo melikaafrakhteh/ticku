@@ -68,7 +68,6 @@ class HomeFragment : Fragment() {
         requireNotNull(homeBinding).homeRv.adapter = rvController.adapter
         lifecycleScope.launch {
             viewModel.listOfTasks.collect { list ->
-                Log.d("list","$list")
                 rvController.setData(list)
             }
         }
@@ -83,12 +82,12 @@ class HomeFragment : Fragment() {
     private fun removeTaskFromList(position: Int) {
         DeleteDialog {
             viewModel.removeTask(position)
-            Toast.makeText(context,getString(R.string.delete_task_msg), Toast.LENGTH_SHORT).show()
-        }.show(requireActivity().supportFragmentManager,"delete")
+            Toast.makeText(context, getString(R.string.delete_task_msg), Toast.LENGTH_SHORT).show()
+        }.show(requireActivity().supportFragmentManager, "delete")
     }
 
     private fun checkDoneHomeTask(position: Int) {
-
+        viewModel.updateTask(position)
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -98,7 +97,6 @@ class HomeFragment : Fragment() {
         val resultDate = Date(yourMilliSeconds)
         return sdf.format(resultDate)
     }
-
 
     private fun itemClicks() {
         with(requireNotNull(homeBinding)) {

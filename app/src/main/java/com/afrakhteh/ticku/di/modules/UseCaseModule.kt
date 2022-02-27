@@ -25,7 +25,8 @@ class UseCaseModule {
             addNewTaskUseCase = AddNewTaskUseCase(mapper, repository),
             deleteOneTaskUseCase = DeleteOneTaskUseCase(repository),
             getAllTasksByDayUseCase = GetAllTasksByDayUseCase(repository, mapper),
-            getOneTaskUseCase = GetOneTaskUseCase(repository, mapper)
+            getOneTaskUseCase = GetOneTaskUseCase(repository, mapper),
+            updateTaskUseCase = UpdateTaskUseCase(repository)
         )
     }
 

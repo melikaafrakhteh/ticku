@@ -8,4 +8,5 @@ interface TaskRepository {
     suspend fun deleteOneTask(id: Int)
     suspend fun getOneTask(id: Int): Tasks
     fun getAllTasksByDay(date: String): Flow<List<Tasks>>
+    suspend fun updateTask(id: Int)
 }
