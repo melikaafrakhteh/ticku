@@ -7,11 +7,10 @@ You can search your desired task by navigate to the search page.
 For architecture, I used Clean architecture with MVVM, and repository pattern.
 
 ## Screen Shots
-<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/mainpage.jpg" width="180px"/></a>
-<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/add.jpg" width="180px"/></a>
-<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/category.jpg" width="180px"/></a>
-<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/search.jpg" width="180px"/></a>
-<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/delete.jpg" width="180px"/></a>
+<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/mainpage.jpg" width="220px"/></a>
+<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/add.jpg" width="220px"/></a>
+<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/category.jpg" width="220px"/></a>
+<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/search.jpg" width="220px"/></a>
 
 ## Technologies and Methodologies which used:
  - **Dagger 2**: version "2.40.5"
