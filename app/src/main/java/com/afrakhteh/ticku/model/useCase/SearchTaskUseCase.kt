@@ -1,6 +1,7 @@
 package com.afrakhteh.ticku.model.useCase
 
 import android.util.Log
+import com.afrakhteh.ticku.di.scopes.UseCaseScope
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.entities.Tasks
 import com.afrakhteh.ticku.model.repository.list.ListTasksRepository
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+@UseCaseScope
 class SearchTaskUseCase @Inject constructor(
     private val repository: ListTasksRepository,
     private val mapper: DomainDataMapper<TaskEntity, Tasks>,
