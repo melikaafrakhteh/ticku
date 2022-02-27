@@ -25,29 +25,31 @@ class HomeViewModel @Inject constructor(
     private val pListOfTasks = MutableStateFlow<List<TaskEntity>>(emptyList())
     val listOfTasks: StateFlow<List<TaskEntity>> = pListOfTasks
 
-    private var addJob: Job? = null
+    private var job: Job? = null
 
     fun addNewTask(taskEntity: TaskEntity) {
-        addJob = CoroutineScope(io).launch {
+        job = CoroutineScope(io).launch {
             mainPageUseCases.addNewTaskUseCase(taskEntity)
         }
     }
 
     fun removeTask(id: Int) {
-        mainPageUseCases.deleteOneTaskUseCase(id)
+        job = CoroutineScope(io).launch {
+            mainPageUseCases.deleteOneTaskUseCase(id)
+        }
     }
 
     fun getAllTask(date: String) {
         viewModelScope.launch {
             mainPageUseCases.getAllTasksByDayUseCase(date).collectLatest {
-                Log.d("vm","$it")
+                Log.d("vm", "$it")
                 pListOfTasks.value = it
             }
         }
     }
 
     override fun onCleared() {
-        addJob?.cancel()
+        job?.cancel()
         super.onCleared()
     }
 }
