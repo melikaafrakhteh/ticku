@@ -11,9 +11,7 @@ class ListTaskRepositoryImpl @Inject constructor(
     private val dao: TaskDao
 ) : ListTasksRepository {
 
-    override suspend fun deleteAllTasksByType(type: Int) {
-        dao.deleteAllTasksByType(type)
-    }
+    override suspend fun deleteAllTasksByType(type: Int) = dao.deleteAllTasksByType(type)
 
     override fun getAllTasksByType(type: Int): Flow<List<Tasks>> = dao.getAllTasksByType(type)
 
