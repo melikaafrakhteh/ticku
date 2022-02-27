@@ -17,13 +17,11 @@ class GetAllTasksByDayUseCase @Inject constructor(
     private val repository: TaskRepository,
     private val mapper: DomainDataMapper<TaskEntity, Tasks>
 ) {
-    operator fun invoke(date: String) = flow {
-        val data = repository.getAllTasksByDay(date).map { list ->
+    operator fun invoke(date: String): Flow<List<TaskEntity>> {
+         return repository.getAllTasksByDay(date).map { list ->
             list.map {
                 mapper.convertDataToDomain(it)
             }
         }
-        Log.d("usecase", "getAllTask: $data")
-        emit(data.flattenToList())
     }
 }

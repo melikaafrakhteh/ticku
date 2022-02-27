@@ -1,29 +1,29 @@
 package com.afrakhteh.ticku.viewModel
 
 import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.afrakhteh.ticku.di.qualifier.IoDispatcher
 import com.afrakhteh.ticku.di.scopes.VmScope
 import com.afrakhteh.ticku.model.entities.TaskEntity
-import com.afrakhteh.ticku.model.useCase.ListsPagesUseCases
 import com.afrakhteh.ticku.model.useCase.MainPageUseCases
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.log
 
 @VmScope
 class HomeViewModel @Inject constructor(
     private val mainPageUseCases: MainPageUseCases,
-    private val listsPagesUseCases: ListsPagesUseCases,
-   @IoDispatcher private val io: CoroutineDispatcher
+    @IoDispatcher private val io: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val pListOfTasks = listsPagesUseCases.getAllTasksUseCase().asLiveData(viewModelScope.coroutineContext)
-    val listOfTasks: LiveData<List<TaskEntity>> = pListOfTasks
+    private val pListOfTasks = MutableStateFlow<List<TaskEntity>>(emptyList())
+    val listOfTasks: StateFlow<List<TaskEntity>> = pListOfTasks
 
     private var addJob: Job? = null
 
@@ -33,18 +33,17 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun removeTask(id: Int){
+    fun removeTask(id: Int) {
         mainPageUseCases.deleteOneTaskUseCase(id)
     }
 
     fun getAllTask(date: String) {
-      val data =  listsPagesUseCases.getAllTasksUseCase().asLiveData()
-        Log.d("vm", "getAllTask: ${data.value}")
-
-        //pListOfTasks.postValue(data.value ?: emptyList())
-    /* val data =  mainPageUseCases.getAllTasksByDayUseCase(date).asLiveData().value
-            Log.d("vm", "getAllTask: $data")
-            pListOfTasks.postValue(data ?: emptyList())*/
+        viewModelScope.launch {
+            mainPageUseCases.getAllTasksByDayUseCase(date).collectLatest {
+                Log.d("vm","$it")
+                pListOfTasks.value = it
+            }
+        }
     }
 
     override fun onCleared() {

@@ -17,4 +17,5 @@
     <string name="No_dialog_msg">No</string>
     <string name="delete_dialog_yes">Yes</string>
     <string name="delete_dialog_content">Are you sure?</string>
+    <string name="delete_task_msg">Task Deleted SuccessFully</string>
 </resources>

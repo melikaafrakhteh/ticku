@@ -23,9 +23,11 @@ import com.afrakhteh.ticku.constants.Strings
 import com.afrakhteh.ticku.databinding.FragmentHomeBinding
 import com.afrakhteh.ticku.di.builders.ViewModelComponentBuilder
 import com.afrakhteh.ticku.model.entities.TaskEntity
+import com.afrakhteh.ticku.view.customs.DeleteDialog
 import com.afrakhteh.ticku.view.fragments.addEdit.AddFragment
 import com.afrakhteh.ticku.view.fragments.home.epoxy.TaskHomeEpoxyController
 import com.afrakhteh.ticku.viewModel.HomeViewModel
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -60,29 +62,33 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // viewModel.getAllTask(findDate().trim())
+
+        viewModel.getAllTask(findDate().trim())
         rvController = TaskHomeEpoxyController(::checkDoneHomeTask, ::removeTaskFromList)
-        requireNotNull(homeBinding).homeRv.setController(rvController)
-        viewModel.listOfTasks.observe(viewLifecycleOwner, ::renderTaskList)
+        requireNotNull(homeBinding).homeRv.adapter = rvController.adapter
+        lifecycleScope.launch {
+            viewModel.listOfTasks.collect { list ->
+                Log.d("list","$list")
+                rvController.setData(list)
+            }
+        }
         itemClicks()
     }
 
     override fun onResume() {
         super.onResume()
-        //viewModel.getAllTask(findDate().trim())
+        viewModel.getAllTask(findDate().trim())
     }
 
     private fun removeTaskFromList(position: Int) {
-
+        DeleteDialog {
+            viewModel.removeTask(position)
+            Toast.makeText(context,getString(R.string.delete_task_msg), Toast.LENGTH_SHORT).show()
+        }.show(requireActivity().supportFragmentManager,"delete")
     }
 
     private fun checkDoneHomeTask(position: Int) {
 
-    }
-
-    private fun renderTaskList(list: List<TaskEntity>?) {
-        rvController.setData(list)
-        Log.d("renderlist", "$list")
     }
 
     @SuppressLint("SimpleDateFormat")
