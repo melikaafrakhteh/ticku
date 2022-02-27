@@ -14,7 +14,7 @@ interface TaskDao {
     suspend fun insert(task: Tasks)
 
     @Query("DELETE FROM Tasks WHERE taskId = :id")
-    fun deleteOneTask(id: Int)
+   suspend fun deleteOneTask(id: Int)
 
     @Query("DELETE FROM Tasks WHERE taskType = :type")
     suspend fun deleteAllTasksByType(type: Int)
@@ -27,9 +27,6 @@ interface TaskDao {
 
     @Query("SELECT * FROM Tasks WHERE taskId = :id")
     suspend fun getOneTask(id: Int): Tasks
-
-    @Query("SELECT * FROM Tasks")
-    fun getAllTasks(): Flow<List<Tasks>>
 
     @Query("SELECT * FROM Tasks WHERE taskName LIKE '%' || :search || '%'")
     fun getSearchedTasks(search: String?): Flow<List<Tasks>>

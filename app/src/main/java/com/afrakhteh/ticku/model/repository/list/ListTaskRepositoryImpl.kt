@@ -17,7 +17,5 @@ class ListTaskRepositoryImpl @Inject constructor(
 
     override fun getAllTasksByType(type: Int): Flow<List<Tasks>> = dao.getAllTasksByType(type)
 
-    override fun getAllTasks(): Flow<List<Tasks>> = dao.getAllTasks()
-
     override fun getSearchedTasks(search: String?): Flow<List<Tasks>>  = dao.getSearchedTasks(search)
 }

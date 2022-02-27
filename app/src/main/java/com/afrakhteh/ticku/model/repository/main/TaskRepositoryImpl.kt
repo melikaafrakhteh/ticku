@@ -17,7 +17,7 @@ class TaskRepositoryImpl @Inject constructor(
         dao.insert(task)
     }
 
-    override fun deleteOneTask(id: Int) {
+    override suspend fun deleteOneTask(id: Int) {
         dao.deleteOneTask(id)
     }
 
