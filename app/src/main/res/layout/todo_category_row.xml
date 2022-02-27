@@ -16,8 +16,7 @@
         android:buttonTint="@color/primary"
         android:minWidth="0dp"
         android:text=""
-        android:clickable="true"
-        android:focusable="true"
+        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
