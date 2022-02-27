@@ -12,8 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(
-    private val useCases: ListsPagesUseCases,
-    @IoDispatcher private val io: CoroutineDispatcher
+    private val useCases: ListsPagesUseCases
 ) : ViewModel() {
 
     private val pListOfData = MutableStateFlow<List<TaskEntity>>(emptyList())
