@@ -2,6 +2,7 @@ package com.afrakhteh.ticku.viewModel
 
 import androidx.lifecycle.*
 import com.afrakhteh.ticku.di.qualifier.IoDispatcher
+import com.afrakhteh.ticku.di.scopes.VmScope
 import com.afrakhteh.ticku.model.entities.TaskEntity
 import com.afrakhteh.ticku.model.useCase.ListsPagesUseCases
 import kotlinx.coroutines.CoroutineDispatcher
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@VmScope
 class CategoryViewModel @Inject constructor(
     private val useCases: ListsPagesUseCases
 ) : ViewModel() {
