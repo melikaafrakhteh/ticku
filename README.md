@@ -1,7 +1,7 @@
 # ticku
-### ticku is a simple and beautiful todo-list application that you can add your tasks in it and see the tasks of that day on the home screen.
+### ticku is a simple and beautiful todo-list application that you can add your tasks on it and see the tasks of that day on the home screen.
 You can put your task in four categories and see the old tasks of those categories. 
-You can delete the specific task by holding it a few moments. Also, it is possible to delete all that categories 's tasks.
+You can delete the specific task by holding it a few seconds. Also, it is possible to delete all that categories' tasks.
 You can search your desired task by navigate to the search page.
 
 For architecture, I used Clean architecture with MVVM, and repository pattern.
