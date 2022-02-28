@@ -11,6 +11,7 @@ For architecture, I used Clean architecture with MVVM, and repository pattern.
 <img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/add.jpg" width="220px"/></a>
 <img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/category.jpg" width="220px"/></a>
 <img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/search.jpg" width="220px"/></a>
+<img src="https://github.com/melikaafrakhteh/ticku/blob/main/screen%20shots/delete.jpg" width="220px"/></a>
 
 ## Technologies and Methodologies which used:
  - **Dagger 2**: version "2.40.5"
